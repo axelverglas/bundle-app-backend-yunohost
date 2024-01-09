@@ -13,6 +13,7 @@ async function bootstrap() {
     type: VersioningType.URI,
   });
 
+  dsfdsfsdf;
   const document = new DocumentBuilder()
     .setTitle('Bundle APP API')
     .setDescription('Documentation Bundle APP API Yunohost')
