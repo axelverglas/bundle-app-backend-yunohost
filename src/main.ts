@@ -1,27 +1,19 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { VersioningType } from '@nestjs/common';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.enableCors();
-
-  app.enableVersioning({
-    defaultVersion: '1.0',
-    type: VersioningType.URI,
-  });
-
-  const document = new DocumentBuilder()
-    .setTitle('Bundle APP API')
-    .setDescription('Documentation Bundle APP API Yunohost')
-    .setVersion('1.0')
+  const config = new DocumentBuilder()
+    .setTitle('APP Bundle API')
+    .setDescription('Description of the APP Bundle API')
+    .setVersion('0.1')
     .build();
 
-  const writerDescriptorDocument = SwaggerModule.createDocument(app, document);
-  SwaggerModule.setup('api', app, writerDescriptorDocument);
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
 
-  await app.listen(3000);
+  await app.listen(process.env.SERVER_PORT || 3000);
 }
 bootstrap();
