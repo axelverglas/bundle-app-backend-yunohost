@@ -9,10 +9,9 @@ export class InstallService {
     for (const appData of appsData) {
       const { appName, domain, path, password } = appData;
 
-      const command = 'ssh';
+      const command = `echo '${process.env.ADMIN_PASSWORD}' | sudo`;
       const args = [
-        `nom-d'utilisateurl@ip-serveur`,
-        `"sudo -S yunohost app install ${appName} --args 'domain=${domain}&path=${path}&init_main_permission=admins&password=${password}&admin=axel'"`,
+        `"-S yunohost app install ${appName} --args 'domain=${domain}&path=${path}&init_main_permission=admins&password=${password}&admin=axel'"`,
       ];
 
       try {
