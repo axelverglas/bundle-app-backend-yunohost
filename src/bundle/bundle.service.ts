@@ -26,7 +26,17 @@ export class BundleService {
 
   async createBundle(bundleData: BundleData): Promise<void> {
     const bundles = await this.readBundlesFile();
+    const newId =
+      bundles.length > 0
+        ? Math.max(...bundles.map((bundle) => bundle.id || 0)) + 1
+        : 1;
+    bundleData.id = newId;
     bundles.push(bundleData);
     await this.writeBundlesFile(bundles);
+  }
+
+  async getOneBundle(bundleId: number): Promise<BundleData> {
+    const bundles = await this.readBundlesFile();
+    return bundles.find((bundle) => bundle.id === bundleId);
   }
 }

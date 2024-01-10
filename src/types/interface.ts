@@ -7,6 +7,7 @@ export interface AppData {
 }
 
 export interface BundleData {
+  id?: number;
   title: string;
   description: string;
   apps: AppData[];

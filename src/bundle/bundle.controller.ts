@@ -19,4 +19,9 @@ export class BundleController {
   async getBundles(): Promise<BundleData[]> {
     return await this.bundleService.readBundlesFile();
   }
+
+  @Get(':id')
+  async getOneBundle(@Body() bundleId: number): Promise<BundleData> {
+    return await this.bundleService.getOneBundle(bundleId);
+  }
 }
