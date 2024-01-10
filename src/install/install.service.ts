@@ -10,11 +10,16 @@ export class InstallService {
     const installationResults = [];
 
     for (const appData of appsData) {
-      const { appName, domain, path, password, adminUser } = appData;
+      const { appName, domain, path, password } = appData;
 
       const command = 'sudo';
       const args = [
-        `"-S yunohost app install ${appName} --args 'domain=${domain}&path=${path}&init_main_permission=admins&password=${password}&admin=${adminUser}'"`,
+        'yunohost',
+        'app',
+        'install',
+        appName,
+        '--args',
+        `domain=${domain}&path=${path}&init_main_permission=admins&password=${password}`,
       ];
 
       try {

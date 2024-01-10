@@ -1,7 +1,9 @@
 import { Controller, Get } from '@nestjs/common';
 import { Post, Body, Res, HttpStatus } from '@nestjs/common';
 import { InstallService } from './install.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Install')
 @Controller('install')
 export class InstallController {
   constructor(private install: InstallService) {}
