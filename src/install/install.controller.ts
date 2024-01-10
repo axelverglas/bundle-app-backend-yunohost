@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { Post, Body, Res, HttpStatus } from '@nestjs/common';
 import { InstallService } from './install.service';
 
@@ -10,6 +10,18 @@ export class InstallController {
   async installApps(@Body() appsData: any[], @Res() response) {
     try {
       const results = await this.install.installApps(appsData);
+      response.status(HttpStatus.OK).json({ results });
+    } catch (error) {
+      response
+        .status(HttpStatus.INTERNAL_SERVER_ERROR)
+        .json({ error: error.message });
+    }
+  }
+
+  @Get('admin-users')
+  async getAdminUsers(@Res() response) {
+    try {
+      const results = await this.install.getAdminUser();
       response.status(HttpStatus.OK).json({ results });
     } catch (error) {
       response

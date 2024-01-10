@@ -1,17 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import { spawn } from 'child_process';
+import { exec, spawn } from 'child_process';
+import { promisify } from 'util';
 
 @Injectable()
 export class InstallService {
+  private execPromise = promisify(exec);
+
   async installApps(appsData: any[]): Promise<any[]> {
     const installationResults = [];
 
     for (const appData of appsData) {
-      const { appName, domain, path, password } = appData;
+      const { appName, domain, path, password, adminUser } = appData;
 
-      const command = `echo '${process.env.ADMIN_PASSWORD}' | sudo`;
+      const command = 'sudo';
       const args = [
-        `"-S yunohost app install ${appName} --args 'domain=${domain}&path=${path}&init_main_permission=admins&password=${password}&admin=axel'"`,
+        `"-S yunohost app install ${appName} --args 'domain=${domain}&path=${path}&init_main_permission=admins&password=${password}&admin=${adminUser}'"`,
       ];
 
       try {
@@ -56,5 +59,14 @@ export class InstallService {
         }
       });
     });
+  }
+
+  async getAdminUser(): Promise<string> {
+    const { stdout } = await this.execPromise(
+      'yunohost user list --admin --output-as json',
+    );
+    const users = JSON.parse(stdout);
+    const adminUser = users;
+    return adminUser;
   }
 }
