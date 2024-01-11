@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller } from '@nestjs/common';
 import { Post, Body, Res, HttpStatus } from '@nestjs/common';
 import { InstallService } from './install.service';
 import { ApiTags } from '@nestjs/swagger';
@@ -18,10 +18,5 @@ export class InstallController {
         .status(HttpStatus.INTERNAL_SERVER_ERROR)
         .json({ error: error.message });
     }
-  }
-
-  @Get('admin-users')
-  async getAdminUsers() {
-    return await this.install.getAdminUser();
   }
 }

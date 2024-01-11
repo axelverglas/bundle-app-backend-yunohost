@@ -1,11 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { exec, spawn } from 'child_process';
-import { promisify } from 'util';
+import { spawn } from 'child_process';
 
 @Injectable()
 export class InstallService {
-  private execPromise = promisify(exec);
-
   async installApps(appsData: any[]): Promise<any[]> {
     const installationResults = [];
 
@@ -64,14 +61,5 @@ export class InstallService {
         }
       });
     });
-  }
-
-  async getAdminUser(): Promise<string> {
-    const { stdout } = await this.execPromise(
-      'sudo yunohost user list --admin --output-as json',
-    );
-    const users = JSON.parse(stdout);
-    const adminUser = users;
-    return adminUser;
   }
 }
