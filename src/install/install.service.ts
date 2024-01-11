@@ -9,7 +9,7 @@ export class InstallService {
     const installationResults = [];
 
     for (const appData of appsData) {
-      const { appName, domain, path, password } = appData;
+      const { appName, domain, path, admin, password } = appData;
 
       const command = 'sudo';
       const args = [
@@ -18,7 +18,7 @@ export class InstallService {
         'install',
         appName,
         '--args',
-        `domain=${domain}&path=${path}&init_main_permission=admins&password=${password}`,
+        `domain=${domain}&path=${path}&init_main_permission=admins&password=${password}&admin=${admin}`,
       ];
 
       try {
