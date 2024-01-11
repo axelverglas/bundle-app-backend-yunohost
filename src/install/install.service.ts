@@ -68,7 +68,7 @@ export class InstallService {
 
   async getAdminUser(): Promise<string> {
     const { stdout } = await this.execPromise(
-      'yunohost user list --admin --output-as json',
+      'sudo yunohost user list --admin --output-as json',
     );
     const users = JSON.parse(stdout);
     const adminUser = users;
