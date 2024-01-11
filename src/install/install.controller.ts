@@ -21,14 +21,7 @@ export class InstallController {
   }
 
   @Get('admin-users')
-  async getAdminUsers(@Res() response) {
-    try {
-      const results = await this.install.getAdminUser();
-      response.status(HttpStatus.OK).json({ results });
-    } catch (error) {
-      response
-        .status(HttpStatus.INTERNAL_SERVER_ERROR)
-        .json({ error: error.message });
-    }
+  async getAdminUsers() {
+    return await this.install.getAdminUser();
   }
 }

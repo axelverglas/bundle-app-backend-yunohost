@@ -37,6 +37,6 @@ export class BundleService {
 
   async getOneBundle(bundleId: number): Promise<BundleData> {
     const bundles = await this.readBundlesFile();
-    return bundles.find((bundle) => bundle.id === bundleId);
+    return bundles.find((bundle) => bundle.id === Number(bundleId));
   }
 }

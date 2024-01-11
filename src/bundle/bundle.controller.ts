@@ -1,4 +1,4 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Param } from '@nestjs/common';
 import { BundleService } from './bundle.service';
 import { Post, Body, Get } from '@nestjs/common';
 import { BundleData } from 'src/types/interface';
@@ -21,7 +21,7 @@ export class BundleController {
   }
 
   @Get(':id')
-  async getOneBundle(@Body() bundleId: number): Promise<BundleData> {
+  async getOneBundle(@Param('id') bundleId: number): Promise<BundleData> {
     return await this.bundleService.getOneBundle(bundleId);
   }
 }
