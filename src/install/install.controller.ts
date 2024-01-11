@@ -1,7 +1,8 @@
 import { Controller } from '@nestjs/common';
-import { Post, Body, Res, HttpStatus } from '@nestjs/common';
+import { Post, Body, Res, HttpStatus, Sse } from '@nestjs/common';
 import { InstallService } from './install.service';
 import { ApiTags } from '@nestjs/swagger';
+import { Observable } from 'rxjs';
 
 @ApiTags('Install')
 @Controller('install')
@@ -18,5 +19,14 @@ export class InstallController {
         .status(HttpStatus.INTERNAL_SERVER_ERROR)
         .json({ error: error.message });
     }
+  }
+
+  @Sse('updates')
+  updates() {
+    return new Observable((subscriber) => {
+      this.install.getEmitter().on('installUpdate', (data) => {
+        subscriber.next({ data });
+      });
+    });
   }
 }

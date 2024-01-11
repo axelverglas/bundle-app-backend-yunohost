@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { spawn } from 'child_process';
-import { InstallGateway } from './install.gateway';
+import { EventEmitter } from 'events';
 
 @Injectable()
 export class InstallService {
-  constructor(private installGateway: InstallGateway) {}
+  private eventEmitter = new EventEmitter();
   async installApps(appsData: any[]): Promise<any[]> {
     const installationResults = [];
 
@@ -22,7 +22,7 @@ export class InstallService {
       ];
 
       try {
-        const result = await this.runCommand(command, args, appName);
+        const result = await this.runCommand(command, args);
         installationResults.push({
           appName,
           status: 'success',
@@ -40,11 +40,7 @@ export class InstallService {
     return installationResults;
   }
 
-  runCommand(
-    command: string,
-    args: string[],
-    appName: string,
-  ): Promise<string> {
+  runCommand(command: string, args: string[]): Promise<string> {
     return new Promise((resolve, reject) => {
       const process = spawn(command, args, { shell: true });
 
@@ -52,17 +48,15 @@ export class InstallService {
       let stderr = '';
 
       process.stdout.on('data', (data) => {
-        const message = data.toString();
-        stdout += message;
-        this.installGateway.sendProgressUpdate({
-          appName,
-          status: 'in-progress',
-          message: message,
-        });
+        stdout += data.toString();
       });
 
       process.stderr.on('data', (data) => {
         stderr += data.toString();
+      });
+
+      process.stdout.on('data', (data) => {
+        this.eventEmitter.emit('installUpdate', data.toString());
       });
 
       process.on('close', (code) => {
@@ -73,5 +67,9 @@ export class InstallService {
         }
       });
     });
+  }
+
+  getEmitter() {
+    return this.eventEmitter;
   }
 }
