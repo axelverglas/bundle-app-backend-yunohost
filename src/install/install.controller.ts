@@ -1,7 +1,7 @@
 import { Controller } from '@nestjs/common';
 import { Post, Body, Res, HttpStatus, Sse } from '@nestjs/common';
 import { InstallService } from './install.service';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Observable } from 'rxjs';
 
 @ApiTags('Install')
@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class InstallController {
   constructor(private install: InstallService) {}
 
+  @ApiOperation({ description: 'Install apps' })
   @Post('')
   async installApps(@Body() appsData: any[], @Res() response) {
     try {
@@ -21,6 +22,7 @@ export class InstallController {
     }
   }
 
+  @ApiOperation({ description: 'Get sse message for install app' })
   @Sse('updates')
   updates() {
     return new Observable((subscriber) => {
