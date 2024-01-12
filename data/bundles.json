@@ -14,7 +14,7 @@
       {
         "app_name": "paheko",
         "name": "Paheko",
-        "logo": "https://raw.githubusercontent.com/YunoHost/apps/master/logos/paheko.png",
+        "logo": "",
         "description": "Logiciel de gestion d'association",
         "screenshot": "https://raw.githubusercontent.com/YunoHost-Apps/paheko_ynh/master/doc/screenshots/screenshot.png"
       },
