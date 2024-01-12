@@ -55,10 +55,10 @@ export class InstallService {
         stderr += data.toString();
       });
 
-      process.stdout.on('data', (data) => {
+      process.stdout.once('data', (data) => {
         const message = data.toString();
-        console.log("Émission d'un événement installUpdate:", message);
-        this.eventEmitter.emit('installUpdate', message);
+        stdout += message;
+        this.emitEvent('installUpdate', message);
       });
 
       process.on('close', (code) => {
@@ -69,6 +69,11 @@ export class InstallService {
         }
       });
     });
+  }
+
+  private emitEvent(eventName: string, data: string) {
+    console.log(`Émission d'un événement ${eventName}:`, data);
+    this.eventEmitter.emit(eventName, data);
   }
 
   getEmitter() {
