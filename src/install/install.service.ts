@@ -55,10 +55,16 @@ export class InstallService {
         stderr += data.toString();
       });
 
-      process.stdout.on('close', () => {
-        this.eventEmitter.emit('installUpdate', {
-          message: stdout,
-        });
+      process.stdout.on('data', (data) => {
+        const lines = data.toString().split('\n');
+        for (const line of lines) {
+          if (line) {
+            this.eventEmitter.emit('installUpdate', {
+              message: line,
+            });
+          }
+        }
+        stdout += data.toString();
       });
 
       process.on('close', (code) => {
