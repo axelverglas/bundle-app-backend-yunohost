@@ -7,58 +7,58 @@
       {
         "app_name": "yeswiki",
         "name": "YesWiki",
-        "logo": "https://github.com/YunoHost/apps/blob/master/logos/yeswiki.png",
+        "logo": "f08c90c8ff38d53a71e100595b62ccd9d436fddbedba8e201fb2cfc7b282a10b",
         "description": "Wiki facile et rapide à prendre en main",
-        "screenshot": "https://github.com/YunoHost-Apps/paheko_ynh/blob/master/doc/screenshots/screenshot.png"
+        "screenshot": "https://raw.githubusercontent.com/YunoHost-Apps/yeswiki_ynh/master/doc/screenshots/yeswiki_screenshots.png"
       },
       {
         "app_name": "paheko",
         "name": "Paheko",
-        "logo": "https://github.com/YunoHost/apps/blob/master/logos/paheko.png",
+        "logo": "https://raw.githubusercontent.com/YunoHost/apps/master/logos/paheko.png",
         "description": "Logiciel de gestion d'association",
-        "screenshot": "https://github.com/YunoHost-Apps/paheko_ynh/blob/master/doc/screenshots/screenshot.png"
+        "screenshot": "https://raw.githubusercontent.com/YunoHost-Apps/paheko_ynh/master/doc/screenshots/screenshot.png"
       },
       {
         "app_name": "nextcloud",
         "name": "Nextcloud",
-        "logo": "https://github.com/YunoHost/apps/blob/master/logos/nextcloud.png",
+        "logo": "7619f283fa6ce9e0c6ae30cef5bb7cb47b926e9abccda4009a70e54579aa915a",
         "description": "Stockage en ligne, plateforme de partage de fichiers et diverses autres applications",
-        "screenshot": "https://github.com/YunoHost-Apps/nextcloud_ynh/blob/master/doc/screenshots/screenshot.png"
+        "screenshot": "https://raw.githubusercontent.com/YunoHost-Apps/nextcloud_ynh/master/doc/screenshots/screenshot.png"
       },
       {
         "app_name": "etherpad",
         "name": "Etherpad",
-        "logo": "https://github.com/YunoHost/apps/blob/master/logos/etherpad.png",
+        "logo": "ce619748d4d0f5c6e39727ed2693c1d676e50ea897ab13e00f651dab300a1dc3",
         "description": "Éditeur en ligne fournissant l'édition collaborative en temps réel",
-        "screenshot": "https://github.com/YunoHost-Apps/etherpad_ynh/blob/master/doc/screenshots/screenshot.png"
+        "screenshot": "https://raw.githubusercontent.com/YunoHost-Apps/etherpad_ynh/master/doc/screenshots/screenshot.png"
       },
       {
         "app_name": "libreto",
         "name": "Libreto",
-        "logo": "https://github.com/YunoHost/apps/blob/master/logos/libreto.png",
+        "logo": "08e31f6bf5ccd5ee16be639075ab5e05a1a9f45e6f4c26112639b6c5e561c8ea",
         "description": "Agrégez vos pads pour créer un wiki",
-        "screenshot": "https://github.com/YunoHost-Apps/libreto_ynh/blob/master/doc/screenshots/home.png"
+        "screenshot": "https://raw.githubusercontent.com/YunoHost-Apps/libreto_ynh/master/doc/screenshots/home.png"
       },
       {
         "app_name": "cryptpad",
         "name": "CryptPad",
-        "logo": "https://github.com/YunoHost/apps/blob/master/logos/cryptpad.png",
+        "logo": "e5b78ee14c25e0688fb5eef411d3a03097ec81148947e1eefff7b7507ccd05eb",
         "description": "Suite bureautique chiffrée pour la collaboration en temps réel",
-        "screenshot": "https://github.com/YunoHost-Apps/cryptpad_ynh/tree/master/doc/screenshots/screenshot.jpg"
+        "screenshot": "https://raw.githubusercontent.com/YunoHost-Apps/cryptpad_ynh/master/doc/screenshots/screenshot.png"
       },
       {
         "app_name": "wekan",
         "name": "Wekan",
-        "logo": "https://github.com/YunoHost/apps/blob/master/logos/wekan.png",
+        "logo": "86a730694dea52aab8df7eb18fed56e033b9393552e72c4bd0657b6ca131f56f",
         "description": "Kanban similaire à Trello",
-        "screenshot": "https://github.com/YunoHost-Apps/wekan_ynh/blob/master/doc/screenshots/screenshot.jpg"
+        "screenshot": "https://raw.githubusercontent.com/YunoHost-Apps/wekan_ynh/master/doc/screenshots/screenshot.jpg"
       },
       {
         "app_name": "scrumblr",
         "name": "Scrumblr",
-        "logo": "https://github.com/YunoHost/apps/blob/master/logos/scrumblr.png",
+        "logo": "dedf3b6360c9a9fa95b66de67d55459ba979e9cdc523343a6af9af384980ebac",
         "description": "Application pour créer des post-it",
-        "screenshot": "https://github.com/YunoHost-Apps/scrumblr_ynh/blob/master/doc/screenshots/post-it_demo.png"
+        "screenshot": "https://raw.githubusercontent.com/YunoHost-Apps/scrumblr_ynh/master/doc/screenshots/post-it_demo.png"
       }
     ]
   }
