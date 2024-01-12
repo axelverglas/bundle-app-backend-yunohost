@@ -26,9 +26,17 @@ export class InstallController {
   @Sse('updates')
   updates() {
     return new Observable((subscriber) => {
-      this.install.getEmitter().on('installUpdate', (data) => {
+      const listener = (data) => {
+        console.log("Envoi d'une mise à jour SSE:", data);
         subscriber.next({ data });
-      });
+      };
+
+      this.install.getEmitter().on('installUpdate', listener);
+
+      // Nettoyage lors de la désinscription
+      return () => {
+        this.install.getEmitter().off('installUpdate', listener);
+      };
     });
   }
 }

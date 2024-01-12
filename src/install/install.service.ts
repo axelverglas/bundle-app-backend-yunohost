@@ -56,7 +56,9 @@ export class InstallService {
       });
 
       process.stdout.on('data', (data) => {
-        this.eventEmitter.emit('installUpdate', data.toString());
+        const message = data.toString();
+        console.log("Émission d'un événement installUpdate:", message);
+        this.eventEmitter.emit('installUpdate', message);
       });
 
       process.on('close', (code) => {
