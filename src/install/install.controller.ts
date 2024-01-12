@@ -33,7 +33,6 @@ export class InstallController {
 
       this.install.getEmitter().on('installUpdate', listener);
 
-      // Nettoyage lors de la désinscription
       return () => {
         this.install.getEmitter().off('installUpdate', listener);
       };
