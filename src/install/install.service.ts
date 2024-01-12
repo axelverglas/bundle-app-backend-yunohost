@@ -18,7 +18,7 @@ export class InstallService {
         'install',
         appName,
         '--args',
-        `domain=${domain}&path=${path}&init_main_permission=admins&admin=${admin}&password=${password}&user_home=false`,
+        `'domain=${domain}&path=${path}&init_main_permission=admins&admin=${admin}&password=${password}&user_home=false'`,
       ];
 
       try {
